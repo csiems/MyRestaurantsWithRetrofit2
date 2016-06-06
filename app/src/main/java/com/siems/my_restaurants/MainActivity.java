@@ -1,12 +1,14 @@
 package com.siems.my_restaurants;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String location = mLocationEditText.getText().toString();
-                Log.d(TAG, location);
                 Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
+                intent.putExtra("location", location);
                 startActivity(intent);
             }
         });
