@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences.Editor mEditor;
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
+    @Bind(R.id.savedRestaurantsButton) Button mSavedRestaurantsButton;
     private DatabaseReference mSearchedLocationReference;
     private ValueEventListener mSearchedLocationReferenceListener;
 
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         mFindRestaurantsButton.setOnClickListener(this);
+        mSavedRestaurantsButton.setOnClickListener(this);
+
 
     }
 
@@ -79,7 +82,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("location", location);
             startActivity(intent);
         }
-
+        if (v == mSavedRestaurantsButton) {
+            Intent intent = new Intent(MainActivity.this, SavedRestaurantListActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void saveLocationToFirebase(String location) {
