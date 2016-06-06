@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.siems.my_restaurants.Constants;
 import com.siems.my_restaurants.R;
 
@@ -20,10 +22,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
-    @Bind(R.id.locationEditText)
-    EditText mLocationEditText;
-    @Bind(R.id.findRestaurantsButton)
-    Button mFindRestaurantsButton;
+    @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
+    @Bind(R.id.locationEditText) EditText mLocationEditText;
+    private DatabaseReference mSearchedLocationReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
 
+        mSearchedLocationReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
         mFindRestaurantsButton.setOnClickListener(this);
     }
 
@@ -41,16 +47,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mFindRestaurantsButton) {
             String location = mLocationEditText.getText().toString();
-            if(!(location).equals("")) {
-                addToSharedPreferences(location);
-            }
+            saveLocationToFirebase(location);
+//            if(!(location).equals("")) {
+//                addToSharedPreferences(location);
+//            }
             Intent intent = new Intent(MainActivity.this, RestaurantListActivity.class);
             startActivity(intent);
         }
 
     }
 
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+    public void saveLocationToFirebase(String location) {
+        mSearchedLocationReference.push().setValue(location);
     }
+//    private void addToSharedPreferences(String location) {
+//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+//    }
 }
