@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        mFindRestaurantsButton.setOnClickListener(this);
+
     }
 
     @Override
