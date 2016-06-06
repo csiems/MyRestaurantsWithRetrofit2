@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "884012324112",
+    "firebase_url": "https://siems-myrestaurants.firebaseio.com",
+    "project_id": "siems-myrestaurants",
+    "storage_bucket": "siems-myrestaurants.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884012324112:android:bfb611fed4707271",
+        "android_client_info": {
+          "package_name": "com.siems.my_restaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884012324112-qb78mjmkm4rhj5j78lvq2li8ud06bhdf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.siems.my_restaurants",
+            "certificate_hash": "477B09904856F550B365046530C32031D2FB6D84"
+          }
+        },
+        {
+          "client_id": "884012324112-0c18bjq7scjs7i5ag9jqf26bfu5i8oc8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByeuZC3O_7eg0z6U0Yt2WMe-7x7oagEdQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
