@@ -1,15 +1,13 @@
-package com.siems.my_restaurants;
+package com.siems.my_restaurants.ui;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.siems.my_restaurants.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

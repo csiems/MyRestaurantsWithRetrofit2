@@ -1,4 +1,4 @@
-package com.siems.my_restaurants;
+package com.siems.my_restaurants.models;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.siems.my_restaurants;
+package com.siems.my_restaurants.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.siems.my_restaurants.R;
+import com.siems.my_restaurants.services.YelpService;
+import com.siems.my_restaurants.models.Restaurant;
 
 import java.io.IOException;
 import java.util.ArrayList;

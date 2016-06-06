@@ -1,4 +1,7 @@
-package com.siems.my_restaurants;
+package com.siems.my_restaurants.services;
+
+import com.siems.my_restaurants.Constants;
+import com.siems.my_restaurants.models.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
