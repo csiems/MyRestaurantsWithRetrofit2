@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,10 +25,10 @@ import butterknife.ButterKnife;
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
-    private ArrayList<Restaurant> mRestaurants = new ArrayList<>();
+    private List<Restaurant> mRestaurants = new ArrayList<>();
     private Context mContext;
 
-    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants) {
+    public RestaurantListAdapter(Context context, List<Restaurant> restaurants) {
         mContext = context;
         mRestaurants = restaurants;
     }
@@ -56,7 +57,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         @Bind(R.id.ratingTextView) TextView mRatingTextView;
         private Context mContext;
 
-
         public RestaurantViewHolder(View itemView) {
             super(itemView);
             mContext = itemView.getContext();
@@ -82,7 +82,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                     .into(mRestaurantImageView);
 
             mNameTextView.setText(restaurant.getName());
-            mCategoryTextView.setText(restaurant.getCategories().get(0));
+//            mCategoryTextView.setText(restaurant.getCategories().get(0));
             mRatingTextView.setText("Rating: " + restaurant.getRating() + "/5");
         }
     }

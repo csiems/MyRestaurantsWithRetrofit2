@@ -66,10 +66,10 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
                 .centerCrop()
                 .into(mImageLabel);
         mNameLabel.setText(mRestaurant.getName());
-        mCategoriesLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getCategories()));
+//        mCategoriesLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getCategories()));
         mRatingLabel.setText(Double.toString(mRestaurant.getRating()) + "/5");
         mPhoneLabel.setText(mRestaurant.getPhone());
-        mAddressLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getAddress()));
+        mAddressLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getLocation().getAddress()));
 
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
@@ -83,7 +83,7 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         if (v == mWebsiteLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mRestaurant.getWebsite()));
+                    Uri.parse(mRestaurant.getUrl()));
             startActivity(webIntent);
         }
         if (v == mPhoneLabel) {
@@ -93,8 +93,8 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
         }
         if (v == mAddressLabel) {
             Intent mapIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("geo:" + mRestaurant.getLatitude()
-                            + "," + mRestaurant.getLongitude()
+                    Uri.parse("geo:" + mRestaurant.getLocation().getCoordinate().getLatitude()
+                            + "," + mRestaurant.getLocation().getCoordinate().getLongitude()
                             + "?q=(" + mRestaurant.getName() + ")"));
             startActivity(mapIntent);
         }

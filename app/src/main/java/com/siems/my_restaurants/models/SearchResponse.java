@@ -8,23 +8,23 @@ import java.util.List;
 @Parcel
 public class SearchResponse {
 
-    public List<Business> businesses = new ArrayList<>();
+    public List<Restaurant> businesses = new ArrayList<>();
     public Integer total;
 
     public SearchResponse() {
         //empty bean constructor for Parcel
     }
 
-    public SearchResponse(ArrayList<Business> businesses, Integer total) {
+    public SearchResponse(ArrayList<Restaurant> businesses, Integer total) {
         this.businesses = businesses;
         this.total = total;
     }
 
-    public List<Business> getBusinesses() {
+    public List<Restaurant> getRestaurants() {
         return businesses;
     }
 
-    public void setBusinesses(ArrayList<Business> businesses) {
+    public void setRestaurants(ArrayList<Restaurant> businesses) {
         this.businesses = businesses;
     }
 
@@ -37,3 +37,4 @@ public class SearchResponse {
     }
 
 }
+

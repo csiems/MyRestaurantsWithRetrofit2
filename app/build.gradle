@@ -71,6 +71,8 @@ dependencies {
     compile 'com.firebaseui:firebase-ui-database:0.4.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'oauth.signpost:signpost-core:1.2.1.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

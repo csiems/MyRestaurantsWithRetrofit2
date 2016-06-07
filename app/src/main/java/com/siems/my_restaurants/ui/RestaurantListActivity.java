@@ -2,32 +2,37 @@ package com.siems.my_restaurants.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
-import com.siems.my_restaurants.Constants;
+import com.siems.my_restaurants.BuildConfig;
 import com.siems.my_restaurants.R;
 import com.siems.my_restaurants.adapters.RestaurantListAdapter;
-import com.siems.my_restaurants.services.YelpService;
+import com.siems.my_restaurants.models.SearchResponse;
+import com.siems.my_restaurants.services.YelpAPI;
+import com.siems.my_restaurants.services.YelpAPIFactory;
 import com.siems.my_restaurants.models.Restaurant;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class RestaurantListActivity extends AppCompatActivity {
 
     private SharedPreferences mSharedPreferences;
     private String mRecentAddress;
+    final String YELP_CONSUMER_KEY = BuildConfig.YELP_CONSUMER_KEY;
+    final String YELP_CONSUMER_SECRET = BuildConfig.YELP_CONSUMER_SECRET;
+    final String YELP_TOKEN = BuildConfig.YELP_TOKEN;
+    final String YELP_TOKEN_SECRET = BuildConfig.YELP_TOKEN_SECRET;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RestaurantListAdapter mAdapter;
@@ -55,17 +60,19 @@ public class RestaurantListActivity extends AppCompatActivity {
     }
 
     private void getRestaurants(String location) {
-        final YelpService yelpService = new YelpService();
-
-        yelpService.findRestaurants(location, new Callback() {
+        String term = "food";
+        YelpAPIFactory apiFactory = new YelpAPIFactory(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, YELP_TOKEN, YELP_TOKEN_SECRET);
+        YelpAPI yelpAPI = apiFactory.createAPI();
+        Call<SearchResponse> call = yelpAPI.search(term, location);
+        Callback<SearchResponse> callback = new Callback<SearchResponse>() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mRestaurants = yelpService.processResults(response);
+            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                SearchResponse searchResponse = response.body();
+                try {
+                    mRestaurants = new ArrayList(searchResponse.getRestaurants());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
 
                 RestaurantListActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -79,6 +86,12 @@ public class RestaurantListActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+            @Override
+            public void onFailure(retrofit2.Call<SearchResponse> call, Throwable t) {
+                Log.d(TAG, t.toString());
+            }
+        };
+        call.enqueue(callback);
+
     }
 }

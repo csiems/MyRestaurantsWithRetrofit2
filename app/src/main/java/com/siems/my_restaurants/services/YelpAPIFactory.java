@@ -12,7 +12,7 @@ import se.akerfeldt.okhttp.signpost.SigningInterceptor;
  * Example:<br />
  * YelpAPIFactory apiFactory = new YelpAPIFactory(consumerKey, consumerSecret, token, tokenSecret);<br />
  * YelpAPI yelpAPI = apiFactory.createAPI();<br />
- * Business business = yelpAPI.getBusiness(businessId).execute();
+ * Restaurant restaurant = yelpAPI.getRestaurant(restaurantId).execute();
  * </p>
  */
 public class YelpAPIFactory {
