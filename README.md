@@ -39,7 +39,8 @@ compile 'se.akerfeldt:okhttp-signpost:1.1.0'
 * You can create placeholders within this route using {}. (Example: `/v2/{username}/`; this placeholder will be filled in with @Path notation.
 * @Query will add the variable to your route prefixed by what is in parenthesis (In  the example above ‘&term=<term string>’
 
-#### Step 4. Build any interceptors as needed (interceptors in this case are wrapper classes needed especially for things like authentication keys and tokens).
+#### Step 4. Build any interceptors as needed
+* Interceptors in this case are wrapper classes needed especially for things like authentication keys and tokens.
 * Look at `services/YelpAPIFactory.java` for an example.
 
 #### Step 5. Instantiate an instance of Retrofit
