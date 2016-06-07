@@ -24,13 +24,14 @@ Add these dependencies to build.gradle:
 
 #### Step 3. Build the interface that will consume the API
 * Example:
-`public interface YelpAPI {`
-`   @GET("/v2/search")`
-`   Call<SearchResponse> search(`
-`           @Query("term") String term,`
-`           @Query("location") String location`
-`   );`
-`  }`
+```java
+  public interface YelpAPI {
+    @GET("/v2/search")
+    Call<SearchResponse> search(
+           @Query("term") String term,
+           @Query("location") String location
+    );
+  }```
 * The parenthesis after @GET holds the url route that is appended onto the base url.
 * You can create placeholders within this route using {}. (Example: `/v2/{username}/`; this placeholder will be filled in with @Path notation.
 * @Query will add the variable to your route prefixed by what is in parenthesis (In  the example above ‘&term=<term string>’
