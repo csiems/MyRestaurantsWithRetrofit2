@@ -12,10 +12,12 @@ The learning curve for learning Retrofit2 is pretty steep if you've never used i
 
 #### Step 1. Dependencies
 Add these dependencies to build.gradle:
-`compile 'com.squareup.retrofit2:retrofit:2.0.0'`
-`compile 'com.squareup.retrofit2:converter-gson:2.0.0'`
-`compile 'com.squareup.okhttp3:okhttp:3.1.2'`
-`compile 'se.akerfeldt:okhttp-signpost:1.1.0'`
+``` java
+compile 'com.squareup.retrofit2:retrofit:2.0.0'
+compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+compile 'com.squareup.okhttp3:okhttp:3.1.2'
+compile 'se.akerfeldt:okhttp-signpost:1.1.0'
+```
 
 #### Step 2. Create your model classes
 * Use http://www.jsonschema2pojo.org/ to create the POJOS you will need.
@@ -31,7 +33,8 @@ Add these dependencies to build.gradle:
            @Query("term") String term,
            @Query("location") String location
     );
-  }```
+  }
+  ```
 * The parenthesis after @GET holds the url route that is appended onto the base url.
 * You can create placeholders within this route using {}. (Example: `/v2/{username}/`; this placeholder will be filled in with @Path notation.
 * @Query will add the variable to your route prefixed by what is in parenthesis (In  the example above ‘&term=<term string>’
@@ -69,11 +72,13 @@ You will need the following programs installed on your computer.
 
 #### Add the following lines to your gradle.properties file:
 
-`YelpConsumerKey = "<your consumer key here>"`
-`YelpConsumerSecret = "<your consumer secret here>"`
-`YelpToken = "<your yelp token here>"`
-`YelpTokenSecret = "<your token secret here>"`
-`FirebaseRootUrl = "https://<your firebase database name>.firebaseio.com/"`
+``` java
+YelpConsumerKey = "<your consumer key here>"
+YelpConsumerSecret = "<your consumer secret here>"
+YelpToken = "<your yelp token here>"
+YelpTokenSecret = "<your token secret here>"
+FirebaseRootUrl = "https://<your firebase database name>.firebaseio.com/"
+```
 
 ### License
 Copyright (c) 2016 Christopher Siems
