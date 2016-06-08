@@ -1,5 +1,7 @@
 package com.siems.my_restaurants.models;
 
+import android.text.TextUtils;
+
 import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
@@ -208,9 +210,18 @@ public class Restaurant {
         this.url = url;
     }
 
-    public String getLargeImageUrl(String imageUrl) {
+    public String getLargeImageUrl() {
+        String imageUrl = this.getImageUrl();
         String largeImageUrl = imageUrl.substring(0, imageUrl.length() - 6).concat("o.jpg");
         return largeImageUrl;
+    }
+
+    public String getCategoriesAsString() {
+        ArrayList<String> categoriesList = new ArrayList<>();
+        for (ArrayList<String> category : this.getCategories()) {
+            categoriesList.add(category.get(0));
+        }
+        return TextUtils.join(", ", categoriesList);
     }
 
 }

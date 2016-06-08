@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,15 +62,15 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
         ButterKnife.bind(this, view);
 
         Picasso.with(view.getContext())
-                .load(mRestaurant.getImageUrl())
+                .load(mRestaurant.getLargeImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
                 .into(mImageLabel);
         mNameLabel.setText(mRestaurant.getName());
-//        mCategoriesLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getCategories()));
+        mCategoriesLabel.setText(mRestaurant.getCategoriesAsString());
         mRatingLabel.setText(Double.toString(mRestaurant.getRating()) + "/5");
         mPhoneLabel.setText(mRestaurant.getPhone());
-        mAddressLabel.setText(android.text.TextUtils.join(", ", mRestaurant.getLocation().getAddress()));
+        mAddressLabel.setText(TextUtils.join(", ", mRestaurant.getLocation().getAddress()));
 
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
@@ -106,4 +107,6 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }
