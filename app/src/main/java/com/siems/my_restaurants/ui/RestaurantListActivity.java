@@ -127,6 +127,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                 Log.d(TAG, t.toString());
             }
         };
+        //call.enqueue runs asynchronously
         call.enqueue(callback);
     }
 }
