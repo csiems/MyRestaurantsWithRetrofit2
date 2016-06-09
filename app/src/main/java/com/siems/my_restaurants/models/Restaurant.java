@@ -232,5 +232,4 @@ public class Restaurant {
         }
         return TextUtils.join(", ", categoriesList);
     }
-
 }
