@@ -11,9 +11,7 @@ public class SearchResponse {
     public List<Restaurant> businesses = new ArrayList<>();
     public Integer total;
 
-    public SearchResponse() {
-        //empty bean constructor for Parcel
-    }
+    public SearchResponse() {}
 
     public SearchResponse(ArrayList<Restaurant> businesses, Integer total) {
         this.businesses = businesses;

@@ -13,47 +13,56 @@ import java.util.List;
 public class Restaurant {
     public String index;
     public List<ArrayList<String>> categories = new ArrayList<>();
-    public String display_phone;
+    @SerializedName("display_phone")
+    public String displayPhone;
     public String id;
-    public String image_url;
-    public Boolean is_claimed;
-    public Boolean is_closed;
+    @SerializedName("image_url")
+    public String imageUrl;
+    @SerializedName("is_claimed")
+    public Boolean isClaimed;
+    @SerializedName("is_closed")
+    public Boolean isClosed;
     public Location location;
-    public String mobile_url;
+    @SerializedName("mobile_url")
+    public String mobileUrl;
     public String name;
     public String phone;
     public Double rating;
-    public String rating_img_url;
-    public String rating_img_url_large;
-    public String rating_img_url_small;
-    public Integer review_count;
-    public String snippet_image_url;
-    public String snippet_text;
+    @SerializedName("rating_img_url")
+    public String ratingImgUrl;
+    @SerializedName("rating_img_url_large")
+    public String ratingImgUrlLarge;
+    @SerializedName("rating_img_url_small")
+    public String ratingImgUrlSmall;
+    @SerializedName("review_count")
+    public Integer reviewCount;
+    @SerializedName("snippet_image_url")
+    public String snippetImageUrl;
+    @SerializedName("snippet_text")
+    public String snippetText;
     public String url;
 
-    public Restaurant() {
-        //empty bean constructor
-    }
+    public Restaurant() {}
 
-    public Restaurant(ArrayList<ArrayList<String>> categories, String display_phone, String id, String image_url, Boolean is_claimed, Boolean is_closed, Location location, String mobile_url, String name, String phone, Double rating, String rating_img_url, String rating_img_url_large, String rating_img_url_small, Integer review_count, String snippet_image_url, String snippet_text, String url) {
+    public Restaurant(ArrayList<ArrayList<String>> categories, String displayPhone, String id, String imageUrl, Boolean isClaimed, Boolean isClosed, Location location, String mobileUrl, String name, String phone, Double rating, String ratingImgUrl, String ratingImgUrlLarge, String ratingImgUrlSmall, Integer reviewCount, String snippetImageUrl, String snippetText, String url) {
         this.index = "not_specified";
         this.categories = categories;
-        this.display_phone = display_phone;
+        this.displayPhone = displayPhone;
         this.id = id;
-        this.image_url = image_url;
-        this.is_claimed = is_claimed;
-        this.is_closed = is_closed;
+        this.imageUrl = imageUrl;
+        this.isClaimed = isClaimed;
+        this.isClosed = isClosed;
         this.location = location;
-        this.mobile_url = mobile_url;
+        this.mobileUrl = mobileUrl;
         this.name = name;
         this.phone = phone;
         this.rating = rating;
-        this.rating_img_url = rating_img_url;
-        this.rating_img_url_large = rating_img_url_large;
-        this.rating_img_url_small = rating_img_url_small;
-        this.review_count = review_count;
-        this.snippet_image_url = snippet_image_url;
-        this.snippet_text = snippet_text;
+        this.ratingImgUrl = ratingImgUrl;
+        this.ratingImgUrlLarge = ratingImgUrlLarge;
+        this.ratingImgUrlSmall = ratingImgUrlSmall;
+        this.reviewCount = reviewCount;
+        this.snippetImageUrl = snippetImageUrl;
+        this.snippetText = snippetText;
         this.url = url;
     }
 
@@ -75,11 +84,11 @@ public class Restaurant {
     }
 
     public String getDisplayPhone() {
-        return display_phone;
+        return displayPhone;
     }
 
-    public void setDisplayPhone(String display_phone) {
-        this.display_phone = display_phone;
+    public void setDisplayPhone(String displayPhone) {
+        this.displayPhone = displayPhone;
     }
 
     public String getId() {
@@ -91,27 +100,27 @@ public class Restaurant {
     }
 
     public String getImageUrl() {
-        return image_url;
+        return imageUrl;
     }
 
-    public void setImageUrl(String image_url) {
-        this.image_url = image_url;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Boolean getIsClaimed() {
-        return is_claimed;
+        return isClaimed;
     }
 
-    public void setIsClaimed(Boolean is_claimed) {
-        this.is_claimed = is_claimed;
+    public void setIsClaimed(Boolean isClaimed) {
+        this.isClaimed = isClaimed;
     }
 
     public Boolean getIsClosed() {
-        return is_closed;
+        return isClosed;
     }
 
-    public void setIsClosed(Boolean is_closed) {
-        this.is_closed = is_closed;
+    public void setIsClosed(Boolean isClosed) {
+        this.isClosed = isClosed;
     }
 
     public Location getLocation() {
@@ -123,11 +132,11 @@ public class Restaurant {
     }
 
     public String getMobileUrl() {
-        return mobile_url;
+        return mobileUrl;
     }
 
-    public void setMobileUrl(String mobile_url) {
-        this.mobile_url = mobile_url;
+    public void setMobileUrl(String mobileUrl) {
+        this.mobileUrl = mobileUrl;
     }
 
     public String getName() {
@@ -155,51 +164,51 @@ public class Restaurant {
     }
 
     public String getRatingImgUrl() {
-        return rating_img_url;
+        return ratingImgUrl;
     }
 
-    public void setRatingImgUrl(String rating_img_url) {
-        this.rating_img_url = rating_img_url;
+    public void setRatingImgUrl(String ratingImgUrl) {
+        this.ratingImgUrl = ratingImgUrl;
     }
 
     public String getRatingImgUrlLarge() {
-        return rating_img_url_large;
+        return ratingImgUrlLarge;
     }
 
-    public void setRatingImgUrlLarge(String rating_img_url_large) {
-        this.rating_img_url_large = rating_img_url_large;
+    public void setRatingImgUrlLarge(String ratingImgUrlLarge) {
+        this.ratingImgUrlLarge = ratingImgUrlLarge;
     }
 
     public String getRatingImgUrlSmall() {
-        return rating_img_url_small;
+        return ratingImgUrlSmall;
     }
 
-    public void setRatingImgUrlSmall(String rating_img_url_small) {
-        this.rating_img_url_small = rating_img_url_small;
+    public void setRatingImgUrlSmall(String ratingImgUrlSmall) {
+        this.ratingImgUrlSmall = ratingImgUrlSmall;
     }
 
     public Integer getReviewCount() {
-        return review_count;
+        return reviewCount;
     }
 
-    public void setReviewCount(Integer review_count) {
-        this.review_count = review_count;
+    public void setReviewCount(Integer reviewCount) {
+        this.reviewCount = reviewCount;
     }
 
     public String getSnippetImageUrl() {
-        return snippet_image_url;
+        return snippetImageUrl;
     }
 
-    public void setSnippetImageUrl(String snippet_image_url) {
-        this.snippet_image_url = snippet_image_url;
+    public void setSnippetImageUrl(String snippetImageUrl) {
+        this.snippetImageUrl = snippetImageUrl;
     }
 
     public String getSnippetText() {
-        return snippet_text;
+        return snippetText;
     }
 
-    public void setSnippetText(String snippet_text) {
-        this.snippet_text = snippet_text;
+    public void setSnippetText(String snippetText) {
+        this.snippetText = snippetText;
     }
 
     public String getUrl() {

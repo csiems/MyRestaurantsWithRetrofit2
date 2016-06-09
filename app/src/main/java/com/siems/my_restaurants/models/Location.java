@@ -13,29 +13,33 @@ public class Location {
     public List<String> address = new ArrayList<>();
     public String city;
     public Coordinate coordinate;
-    public String country_code;
-    public String cross_streets;
-    public List<String> display_address = new ArrayList<>();
-    public Double geo_accuracy;
+    @SerializedName("country_code")
+    public String countryCode;
+    @SerializedName("cross_streets")
+    public String crossStreets;
+    @SerializedName("display_address")
+    public List<String> displayAddress = new ArrayList<>();
+    @SerializedName("geo_accuracy")
+    public Double geoAccuracy;
     public List<String> neighborhoods = new ArrayList<>();
-    public String postal_code;
-    public String state_code;
+    @SerializedName("postal_code")
+    public String postalCode;
+    @SerializedName("state_code")
+    public String stateCode;
 
-    public Location() {
-        //empty bean constructor
-    }
+    public Location() {}
 
-    public Location(ArrayList<String> address, String city, Coordinate coordinate, String country_code, String cross_streets, ArrayList<String> display_address, Double geo_accuracy, ArrayList<String> neighborhoods, String postal_code, String state_code) {
+    public Location(ArrayList<String> address, String city, Coordinate coordinate, String countryCode, String crossStreets, ArrayList<String> displayAddress, Double geoAccuracy, ArrayList<String> neighborhoods, String postalCode, String stateCode) {
         this.address = address;
         this.city = city;
         this.coordinate = coordinate;
-        this.country_code = country_code;
-        this.cross_streets = cross_streets;
-        this.display_address = display_address;
-        this.geo_accuracy = geo_accuracy;
+        this.countryCode = countryCode;
+        this.crossStreets = crossStreets;
+        this.displayAddress = displayAddress;
+        this.geoAccuracy = geoAccuracy;
         this.neighborhoods = neighborhoods;
-        this.postal_code = postal_code;
-        this.state_code = state_code;
+        this.postalCode = postalCode;
+        this.stateCode = stateCode;
     }
 
     public List<String> getAddress() {
@@ -63,35 +67,35 @@ public class Location {
     }
 
     public String getCountryCode() {
-        return country_code;
+        return countryCode;
     }
 
     public void setCountryCode(String countryCode) {
-        this.country_code = countryCode;
+        this.countryCode = countryCode;
     }
 
     public String getCrossStreets() {
-        return cross_streets;
+        return crossStreets;
     }
 
-    public void setCrossStreets(String cross_streets) {
-        this.cross_streets = cross_streets;
+    public void setCrossStreets(String crossStreets) {
+        this.crossStreets = crossStreets;
     }
 
     public List<String> getDisplayAddress() {
-        return display_address;
+        return displayAddress;
     }
 
-    public void setDisplayAddress(ArrayList<String> display_address) {
-        this.display_address = display_address;
+    public void setDisplayAddress(ArrayList<String> displayAddress) {
+        this.displayAddress = displayAddress;
     }
 
     public Double getGeoAccuracy() {
-        return geo_accuracy;
+        return geoAccuracy;
     }
 
-    public void setGeoAccuracy(Double geo_accuracy) {
-        this.geo_accuracy = geo_accuracy;
+    public void setGeoAccuracy(Double geoAccuracy) {
+        this.geoAccuracy = geoAccuracy;
     }
 
     public List<String> getNeighborhoods() {
@@ -103,19 +107,19 @@ public class Location {
     }
 
     public String getPostalCode() {
-        return postal_code;
+        return postalCode;
     }
 
-    public void setPostalCode(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getStateCode() {
-        return state_code;
+        return stateCode;
     }
 
-    public void setStateCode(String state_code) {
-        this.state_code = state_code;
+    public void setStateCode(String stateCode) {
+        this.stateCode = stateCode;
     }
 
 }
