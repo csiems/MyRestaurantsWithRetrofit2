@@ -1,5 +1,6 @@
 package com.siems.my_restaurants.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.loginTextView) TextView mLoginTextView;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
+    private String mName;
 
 
     @Override
@@ -44,6 +47,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
         createAuthStateListener();
+        createAuthProgressDialog();
     }
 
     @Override
@@ -88,6 +92,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
     private void createNewUser() {
+        mName = mNameEditText.getText().toString().trim();
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
@@ -97,11 +102,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
+        mAuthProgressDialog.show();
+
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        mAuthProgressDialog.dismiss();
                         Log.d(TAG, "Authentication successful");
                         if (!task.isSuccessful()) {
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
@@ -137,5 +145,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             return false;
         }
         return true;
+    }
+
+    private void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 }
