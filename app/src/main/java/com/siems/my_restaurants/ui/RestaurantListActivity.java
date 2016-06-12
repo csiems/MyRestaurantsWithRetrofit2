@@ -123,11 +123,10 @@ public class RestaurantListActivity extends AppCompatActivity {
                 });
             }
             @Override
-            public void onFailure(retrofit2.Call<SearchResponse> call, Throwable t) {
+            public void onFailure(Call<SearchResponse> call, Throwable t) {
                 Log.d(TAG, t.toString());
             }
         };
-        //call.enqueue runs asynchronously
         call.enqueue(callback);
     }
 }

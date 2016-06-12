@@ -58,9 +58,6 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         private static final int MAX_WIDTH = 200;
         private static final int MAX_HEIGHT = 200;
 
-        private ArrayList<Restaurant> mRestaurants = new ArrayList<>();
-        private Context mContext;
-
         public RestaurantViewHolder(View itemView) {
             super(itemView);
             mContext = itemView.getContext();
