@@ -37,7 +37,7 @@ compile 'se.akerfeldt:okhttp-signpost:1.1.0'
   ```
 * The parenthesis after @GET holds the url route that is appended onto the base url.
 * You can create placeholders within this route using {}. (Example: `/v2/{username}/`; this placeholder will be filled in with @Path notation.
-* @Query will add the variable to your route prefixed by what is in parenthesis (In  the example above ‘&term=<term string>’
+* @Query will add the variable to your route prefixed by what is in parenthesis (In  the example above `/v2/search&term=<term string>`)
 
 #### Step 4. Build any interceptors as needed
 * Interceptors in this case are wrapper classes needed especially for things like authentication keys and tokens.
