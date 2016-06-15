@@ -19,7 +19,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.siems.my_restaurants.Constants;
 import com.siems.my_restaurants.R;
+import com.siems.my_restaurants.models.User;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -83,7 +85,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    createFirebaseUserProfile(user);
+                    createUserFirebaseUserProfile(user);
                     Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -93,7 +95,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         };
     }
 
-    private void createFirebaseUserProfile(final FirebaseUser user) {
+    private void createUserFirebaseUserProfile(final FirebaseUser user) {
         UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
                 .setDisplayName(mName)
                 .build();
@@ -109,12 +111,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     }
 
     private void createNewUser() {
-        mName = mNameEditText.getText().toString().trim();
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
-
+        mName = mNameEditText.getText().toString().trim();
         boolean validEmail = isValidEmail(email);
         boolean validName = isValidName(name);
         boolean validPassword = isValidPassword(password, confirmPassword);
@@ -125,7 +126,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        mAuthProgressDialog.dismiss();
                         Log.d(TAG, "Authentication successful");
                         if (!task.isSuccessful()) {
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
@@ -169,6 +169,5 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mAuthProgressDialog.setMessage("Authenticating with Firebase...");
         mAuthProgressDialog.setCancelable(false);
     }
-
 
 }

@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.siems.my_restaurants.Constants;
@@ -100,11 +102,16 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
             startActivity(mapIntent);
         }
         if (v == mSaveRestaurantButton) {
-            DatabaseReference restaurantRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
-            restaurantRef.push().setValue(mRestaurant);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                DatabaseReference restaurantRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(user.getUid() + "/" + Constants.FIREBASE_CHILD_RESTAURANTS + "/");
+                restaurantRef.push().setValue(mRestaurant);
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "Trouble finding user account", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -9,12 +9,15 @@ public class Constants {
     public static final String YELP_BASE_URL = "https://api.yelp.com/v2/search?term=food";
     public static final String YELP_LOCATION_QUERY_PARAMETER = "location";
 
-    /* Shared Preferences constants */
+    /*Shared Preferences constants*/
     public static final String PREFERENCES_LOCATION_KEY = "location";
     public static final String PREFERENCES_UID_KEY = "uid";
 
-    /* Firebase constants */
+    /*Firebase constants*/
     public static final String FIREBASE_CHILD_SEARCHED_LOCATION = "searchedLocation";
     public static final String FIREBASE_CHILD_RESTAURANTS = "restaurants";
     public static final String FIREBASE_CHILD_USERS = "users";
+    public static final String KEY_UID = "UID";
+    public static final String KEY_USER_EMAIL = "email";
+
 }
