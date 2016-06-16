@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.siems.my_restaurants.Constants;
 import com.siems.my_restaurants.R;
+import com.siems.my_restaurants.adapters.FirebaseRestaurantListAdapter;
 import com.siems.my_restaurants.adapters.FirebaseRestaurantViewHolder;
 import com.siems.my_restaurants.models.Restaurant;
 
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 
 public class SavedRestaurantListActivity extends AppCompatActivity {
     private DatabaseReference mRestaurantReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseRestaurantListAdapter mFirebaseAdapter;
     @Bind(R.id.recyclerView) RecyclerView mRecylerView;
 
     @Override
@@ -36,7 +37,7 @@ public class SavedRestaurantListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Restaurant, FirebaseRestaurantViewHolder>
+        mFirebaseAdapter = new FirebaseRestaurantListAdapter
                 (Restaurant.class, R.layout.restaurant_list_item, FirebaseRestaurantViewHolder.class, mRestaurantReference) {
 
             @Override
